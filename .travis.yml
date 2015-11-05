@@ -1,0 +1,17 @@
+sudo: false
+language: node_js
+node_js:
+- stable
+install: npm update
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: npm
+  email: dominic@dbarnes.info
+  api_key:
+    secure: YjftdvdSJSL5sPXCm96ZibAaRxkUUA3PA/VcZ3Okg57faNRX3KS+JOiEfqySpSZ41/79T9rxFoAdwSW1M4ymMPbOJHB+eRGV6IDgcKIszWsQkP+WIOgl+KV9wKkovXBSZQrX6bP3KUAtMDlqLjSXkypeVd9664Vut7rTnlbCp+a+eIoW5J+LYlD6RwSIj457mvl8Tw8gdqkdVUogV+VsqqeVeqeF/I2dSWib2ffOT0nUm9HdJIjFZLJUlGFTwClsc+atGI6E/YDjW1x3UEsfdRq+73f4YB1OTxGjvabECvyPu6xzZO4k94P7fJHYwN0zsIcjvrlGj9RFZH+39g6rQBKVyIqehYnG5WkHXjtRpt9U+1QShkrmt1Dl56sr6ztfQIwiv6j0xgqCuQMs6wSw8xENCYNwqeGG8Y6blmjI4HsoWU0GSk4MrmU09NWFAd7XkgmbmBPBM0w82JZ/x66eciYPj4DUwAeBEviPPvpcusG0VnGUEfGMYxrEKzbNgyg5WqdtGoC77nBNsl+T8lYGvdL/0DiMVTnItFNhr8Ql8pmI9R+YXTRQGtuzUmrMLCtMC3kFlDLibnpt4Uib4z4kkZzxH22/Hhnm+iAT17GGbzFzPG6xXE9jJrRqPij+R+QuSC8WOMvznXw9sxlPeAACom7ADrfEP1LySye38jdPYUE=
+  on:
+    tags: true
+    repo: makojs/babel
+    node: stable
