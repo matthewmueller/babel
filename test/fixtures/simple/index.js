@@ -1,2 +1,2 @@
 
-export default true;
+export var a = 1;

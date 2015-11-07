@@ -24,7 +24,7 @@ describe('babel plugin', function () {
       .build(entry)
       .then(function (tree) {
         let file = tree.getFile(entry);
-        assert.strictEqual(exec(file.contents), true);
+        assert.deepEqual(exec(file.contents), { a: 1 });
       });
   });
 });
