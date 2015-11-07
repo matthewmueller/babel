@@ -47,7 +47,3 @@ This requires some sort of read plugin that populates `file.contents` with a str
 For each file processed, it will compile `file.contents` from input ES6 into ES5 w/ CommonJS modules.
 Currently, this plugin is designed to be compatible with [mako-js](https://github.com/makojs/js), but
 interoperability will come in the future.
-
-## Use Cases
-
-This is a great plugin for working with ES6 code.
