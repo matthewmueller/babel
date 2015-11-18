@@ -35,8 +35,14 @@ mako()
 
 Available `options` include:
  - `extensions`: a list of extensions to compile. (default: `js`)
+ - `only`: a whitelist of files (globs, functions and regex allowed) to compile (takes precedence over `ignore`)
+ - `ignore`: a blacklist of files to compile
 
 This plugin does not expose a lot of configuration, as using a `.babelrc` file is encouraged.
+
+**NOTE:** by default, this module ignores anything in `node_modules` by default. Any modules should be precompiled
+before being published to NPM. If there is enough demand for it, I will consider adding configuration for other
+workflows. (although I will point out it is discouraged by the babel team as far as I can tell)
 
 ## Dependencies
 
