@@ -15,7 +15,7 @@ module.exports = function (options) {
   let config = defaults(options, {
     extensions: 'js',
     ignore: [ /node_modules/i ],
-    only: []
+    only: null
   });
 
   return function (mako) {
