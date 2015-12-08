@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "A mako plugin for transpiling ES6 code using babel",
   "repository": "makojs/babel",
+  "license": "MIT",
   "dependencies": {
     "babel-core": "^6.0.20",
     "debug": "^2.2.0",
