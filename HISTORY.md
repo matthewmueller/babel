@@ -1,4 +1,10 @@
 
+0.3.0 / 2015-12-07
+==================
+
+  * deps: update mako and plugins
+  * meta: adding license to package.json
+
 0.2.0 / 2015-12-03
 ==================
 
