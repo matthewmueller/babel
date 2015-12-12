@@ -27,8 +27,27 @@ describe('babel plugin', function () {
         assert.deepEqual(exec(file.contents), { a: 1 });
       });
   });
+
+  it('should convert other file types into js', function () {
+    let entry = fixture('es/index.es');
+
+    return mako()
+      .use(text('js'))
+      .use(babel())
+      .use(js())
+      .build(entry)
+      .then(function (tree) {
+        let file = tree.getFile(entry);
+        assert.equal(file.type, 'es');
+      });
+  });
 });
 
+/**
+ * Execute the JS string in a new context
+ * @param  {String} code javascript string
+ * @return {Mixed} value
+ */
 function exec(code) {
   return vm.runInNewContext(`${code}(1)`);
 }

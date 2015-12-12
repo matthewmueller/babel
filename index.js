@@ -30,6 +30,7 @@ module.exports = function (options) {
         sourceMaps: 'inline'
       });
       file.contents = results.code;
+      file.type = 'js';
     });
   };
 };
