@@ -32,13 +32,13 @@ describe('babel plugin', function () {
     let entry = fixture('es/index.es');
 
     return mako()
-      .use(text('js'))
-      .use(babel())
+      .use(text('es'))
+      .use(babel({ extensions: 'es' }))
       .use(js())
       .build(entry)
       .then(function (tree) {
         let file = tree.getFile(entry);
-        assert.equal(file.type, 'es');
+        assert.equal(file.type, 'js');
       });
   });
 });
