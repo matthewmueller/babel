@@ -37,6 +37,7 @@ Available `options` include:
  - `extensions`: a list of extensions to compile. (default: `js`)
  - `only`: a whitelist of files (globs, functions and regex allowed) to compile (takes precedence over `ignore`)
  - `ignore`: a blacklist of files to compile
+ - `sourceMaps`: turn on to enable source maps
 
 This plugin does not expose a lot of configuration, as using a `.babelrc` file is encouraged.
 
@@ -53,3 +54,6 @@ This requires some sort of read plugin that populates `file.contents` with a str
 For each file processed, it will compile `file.contents` from input ES6 into ES5 w/ CommonJS modules.
 Currently, this plugin is designed to be compatible with [mako-js](https://github.com/makojs/js), but
 interoperability will come in the future.
+
+If `options.sourceMaps` is turned on, it will include the source-maps inline. This allows the maps to
+be picked up by build plugins.

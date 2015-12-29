@@ -19,7 +19,8 @@ module.exports = function (options) {
   let config = defaults(options, {
     extensions: 'js',
     ignore: [ /node_modules/i ],
-    only: null
+    only: null,
+    sourceMaps: false
   });
 
   return function (mako) {
@@ -29,7 +30,7 @@ module.exports = function (options) {
       debug('compiling %s', relative(file.path));
       let results = compile(file.contents, {
         filename: file.path,
-        sourceMaps: 'inline'
+        sourceMaps: config.sourceMaps ? 'inline' : false
       });
 
       file.contents = results.code;

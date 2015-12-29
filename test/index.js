@@ -3,6 +3,7 @@
 
 let babel = require('..');
 let chai = require('chai');
+let convert = require('convert-source-map');
 let js = require('mako-js');
 let mako = require('mako');
 let path = require('path');
@@ -28,18 +29,38 @@ describe('babel plugin', function () {
       });
   });
 
-  it('should convert other file types into js', function () {
-    let entry = fixture('es/index.es');
+  context('with options', function () {
+    context('.extensions', function () {
+      it('should convert other file types into js', function () {
+        let entry = fixture('extensions/index.es');
 
-    return mako()
-      .use(text('es'))
-      .use(babel({ extensions: 'es' }))
-      .use(js())
-      .build(entry)
-      .then(function (tree) {
-        let file = tree.getFile(entry);
-        assert.equal(file.type, 'js');
+        return mako()
+          .use(text('es'))
+          .use(babel({ extensions: 'es' }))
+          .use(js())
+          .build(entry)
+          .then(function (tree) {
+            let file = tree.getFile(entry);
+            assert.equal(file.type, 'js');
+          });
       });
+    });
+
+    context('.sourceMaps', function () {
+      it('should include an inline source-map', function () {
+        let entry = fixture('simple/index.js');
+
+        return mako()
+          .use(text('js'))
+          .use(babel({ sourceMaps: true }))
+          .use(js())
+          .build(entry)
+          .then(function (tree) {
+            let file = tree.getFile(entry);
+            assert.isTrue(convert.commentRegex.test(file.contents));
+          });
+      });
+    });
   });
 });
 
