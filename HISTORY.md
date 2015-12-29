@@ -1,4 +1,9 @@
 
+0.5.0 / 2015-12-29
+==================
+
+  * allowing source-maps to be enabled via config
+
 0.4.0 / 2015-12-22
 ==================
 
