@@ -25,7 +25,7 @@ describe('babel plugin', function () {
       .build(entry)
       .then(function (tree) {
         let file = tree.getFile(entry);
-        assert.deepEqual(exec(file.contents), { a: 1 });
+        assert.deepEqual(exec(file), { a: 1 });
       });
   });
 
@@ -53,8 +53,7 @@ describe('babel plugin', function () {
         return mako()
           .use(text('js'))
           .use(babel({ sourceMaps: true }))
-          .use(js())
-          .build(entry)
+          .analyze(entry)
           .then(function (tree) {
             let file = tree.getFile(entry);
             assert.isTrue(convert.commentRegex.test(file.contents));
@@ -69,6 +68,6 @@ describe('babel plugin', function () {
  * @param  {String} code javascript string
  * @return {Mixed} value
  */
-function exec(code) {
-  return vm.runInNewContext(`${code}(1)`);
+function exec(file) {
+  return vm.runInNewContext(file.contents)(file.id);
 }
