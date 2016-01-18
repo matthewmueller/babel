@@ -1,6 +1,6 @@
 {
   "name": "mako-babel",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A mako plugin for transpiling ES6 code using babel",
   "repository": "makojs/babel",
   "license": "MIT",
