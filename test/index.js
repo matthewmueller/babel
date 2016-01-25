@@ -23,8 +23,8 @@ describe('babel plugin', function () {
       .use(babel())
       .use(js())
       .build(entry)
-      .then(function (tree) {
-        let file = tree.getFile(entry);
+      .then(function (build) {
+        let file = build.tree.getFile(entry);
         assert.deepEqual(exec(file), { a: 1 });
       });
   });
@@ -39,8 +39,8 @@ describe('babel plugin', function () {
           .use(babel({ extensions: 'es' }))
           .use(js())
           .build(entry)
-          .then(function (tree) {
-            let file = tree.getFile(entry);
+          .then(function (build) {
+            let file = build.tree.getFile(entry);
             assert.equal(file.type, 'js');
           });
       });
@@ -54,8 +54,8 @@ describe('babel plugin', function () {
           .use(text('js'))
           .use(babel({ sourceMaps: true }))
           .analyze(entry)
-          .then(function (tree) {
-            let file = tree.getFile(entry);
+          .then(function (build) {
+            let file = build.tree.getFile(entry);
             assert.isTrue(convert.commentRegex.test(file.contents));
           });
       });

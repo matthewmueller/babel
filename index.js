@@ -24,10 +24,10 @@ module.exports = function (options) {
   });
 
   return function (mako) {
-    mako.postread(config.extensions, function babel(file) {
+    mako.postread(config.extensions, function babel(file, tree, build) {
       if (shouldIgnore(file.path, config.ignore, config.only)) return;
 
-      file.time('babel');
+      let timer = build.time('babel');
       debug('compiling %s', relative(file.path));
       let results = compile(file.contents, {
         filename: file.path,
@@ -36,7 +36,7 @@ module.exports = function (options) {
 
       file.contents = results.code;
       file.type = 'js';
-      file.timeEnd('babel');
+      timer();
     });
   };
 };
