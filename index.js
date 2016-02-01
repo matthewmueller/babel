@@ -20,6 +20,7 @@ module.exports = function (options) {
     extensions: 'js',
     ignore: [ /node_modules/i ],
     plugins: [],
+    presets: [],
     only: null,
     sourceMaps: false
   });
@@ -33,7 +34,8 @@ module.exports = function (options) {
       let results = compile(file.contents, {
         filename: file.path,
         sourceMaps: config.sourceMaps ? 'inline' : false,
-        plugins: config.plugins
+        plugins: config.plugins,
+        presets: config.presets
       });
 
       file.contents = results.code;
